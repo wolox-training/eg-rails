@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe Book do
-  subject(:book) { create(:book) }
+  subject(:book) { build_stubbed(:book) }
 
   it { is_expected.to be_valid }
   it { is_expected.to validate_presence_of(:title) }
