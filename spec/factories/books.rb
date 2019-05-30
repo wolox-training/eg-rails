@@ -5,6 +5,6 @@ FactoryBot.define do
     year { 2019 }
     editor { Faker::Book.publisher }
     gender { Faker::Book.genre }
-    image { "/images/random.jpg" }
+    image { '/images/random.jpg' }
   end
 end

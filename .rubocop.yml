@@ -3,4 +3,8 @@ Documentation:
 LineLength:
    Max: 99
 Style/FrozenStringLiteralComment:
-  Enabled: false
+   Enabled: false
+Style/BlockComments:
+   Enabled: false
+Style/ExpandPathArguments:
+   Enabled: false
