@@ -5,10 +5,10 @@ describe Book do
 
   it { is_expected.to be_valid }
 
-  #Associations
+  # Associations
   it { should have_many(:rents) }
 
-  #Validations
+  # Validations
   it { is_expected.to validate_presence_of(:title) }
   it { is_expected.to validate_presence_of(:author) }
   it { is_expected.to validate_presence_of(:year) }
