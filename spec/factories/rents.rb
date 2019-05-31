@@ -1,8 +1,16 @@
 FactoryBot.define do
   factory :rent do
-    user
-    book
-    start_at { '2019-05-30 14:16:55' }
-    end_at { '2019-05-30 14:16:55' }
+    start_at { 1.week.ago }
+    end_at { 1.week.after }
+
+    trait :with_user do
+      association :user
+    end
+
+    trait :with_book do
+      association :book
+    end
+
+    factory :rent_with_user_and_book, traits: %i[with_user with_book]
   end
 end
