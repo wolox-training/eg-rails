@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :rent do
-    start_at { 1.week.ago }
+    start_at { 1.day.after }
     end_at { 1.week.after }
 
     trait :with_user do
