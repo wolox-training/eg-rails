@@ -76,3 +76,5 @@ gem 'travis'
 gem 'devise_token_auth'
 
 gem 'active_model_serializers', '~> 0.10.0'
+
+gem 'wor-paginate'
