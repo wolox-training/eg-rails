@@ -8,3 +8,5 @@ Style/BlockComments:
    Enabled: false
 Style/ExpandPathArguments:
    Enabled: false
+Metrics/BlockLength:
+   Enabled: false
