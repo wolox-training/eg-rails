@@ -1,10 +1,6 @@
 module Api
   module V1
-    class BooksController < ApplicationController
-      before_action :authenticate_api_v1_user!
-
-      rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
-
+    class BooksController < ApiController
       include Wor::Paginate
 
       def index
@@ -12,25 +8,15 @@ module Api
       end
 
       def show
-        if params[:id].present?
-          @book = Book.find(params[:id])
+        @book = Book.find(show_params[:id])
 
-          render json: @book
-        else
-          render json: {
-            errors: "ID can't be blank",
-            error_code: :bad_request
-          }, status: :bad_request
-        end
+        render json: @book
       end
 
       private
 
-      def render_not_found_response
-        render json: {
-          message: "Not found with id #{params[:id]}",
-          code: :not_found
-        }, status: :not_found
+      def show_params
+        params.permit(:id)
       end
     end
   end
