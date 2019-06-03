@@ -17,7 +17,7 @@ describe Rent do
 
   describe '#end_at_after_start_at' do
     context 'with correct dates' do
-      it 'should not have errors' do
+      it 'not have errors' do
         valid_rent = build_stubbed(:rent)
         valid_rent.send(:end_at_after_start_at)
 
@@ -26,7 +26,7 @@ describe Rent do
     end
 
     context 'with the end_at less than start_at date' do
-      it 'should be include errors' do
+      it 'be include errors' do
         valid_rent = build_stubbed(:rent, start_at: 1.week.after, end_at: 1.day.after)
         valid_rent.send(:end_at_after_start_at)
 
@@ -38,7 +38,7 @@ describe Rent do
 
   describe '#dates_are_not_passed' do
     context 'with correct dates' do
-      it 'should not have errors' do
+      it 'not have errors' do
         valid_rent = build_stubbed(:rent)
         valid_rent.send(:dates_are_not_passed)
 
@@ -47,7 +47,7 @@ describe Rent do
     end
 
     context 'with the start_at less than now' do
-      it 'should be include errors' do
+      it 'be include errors' do
         valid_rent = build_stubbed(:rent, start_at: 1.week.ago, end_at: 1.week.after)
         valid_rent.send(:dates_are_not_passed)
 
@@ -57,12 +57,75 @@ describe Rent do
     end
 
     context 'with the end_at less than now' do
-      it 'should be include errors' do
+      it 'be include errors' do
         valid_rent = build_stubbed(:rent, start_at: Time.zone.now, end_at: 1.day.ago)
         valid_rent.send(:dates_are_not_passed)
 
         expect(valid_rent.errors.include?(:end_at)).to be(true)
         expect(valid_rent.errors.messages[:end_at]).to eq ['must be after today']
+      end
+    end
+  end
+
+  describe '#available_book' do
+    context 'is not already rented' do
+      it 'not have errors' do
+        subject.send(:available_book)
+
+        expect(subject.errors.empty?).to be(true)
+      end
+    end
+
+    context 'is already rented' do
+      it 'be include errors' do
+        Rent.any_instance.stub(:available?).and_return(false)
+        subject.send(:available_book)
+
+        expect(subject.errors.include?(:base)).to be(true)
+        expect(subject.errors.messages[:base]).to eq ['is already rented']
+      end
+    end
+  end
+
+  describe '#available?' do
+    context 'is not already rented' do
+      it 'not have errors' do
+        expect(subject.available?).to be(true)
+      end
+    end
+
+    context 'is already rented' do
+      context 'start_at in the range' do
+        it 'be include errors' do
+          old_rent = create(:rent_with_user_and_book)
+
+          new_rent = build_stubbed(
+            :rent_with_user_and_book,
+            book: old_rent.book,
+            end_at: 3.weeks.after
+          )
+
+          expect(new_rent.available?).to be(false)
+        end
+      end
+
+      context 'end_at in the range' do
+        it 'be include errors' do
+          old_rent = create(
+            :rent_with_user_and_book,
+            start_at: 2.days.after,
+            end_at: 2.weeks.after
+          )
+
+          new_rent = build_stubbed(
+            :rent_with_user_and_book,
+            book: old_rent.book,
+            start_at: Time.zone.now,
+            end_at: 1.week.after
+          )
+
+          expect(new_rent.available?).to be(false)
+        end
       end
     end
   end
