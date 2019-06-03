@@ -3,8 +3,10 @@ module Api
     class BooksController < ApplicationController
       before_action :authenticate_api_v1_user!
 
+      include Wor::Paginate
+
       def index
-        render json: Book.all
+        render_paginated Book.all
       end
 
       def show
