@@ -1,16 +1,9 @@
 class ApplicationController < ActionController::API
-  include DeviseTokenAuth::Concerns::SetUserByToken
+  before_action :configure_permitted_parameters, if: :devise_controller?
 
-  rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
+  protected
 
-  before_action :authenticate_api_v1_user!
-
-  private
-
-  def render_not_found_response
-    render json: {
-      message: "Not found with id #{params[:id]}",
-      code: :not_found
-    }, status: :not_found
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :last_name])
   end
 end
