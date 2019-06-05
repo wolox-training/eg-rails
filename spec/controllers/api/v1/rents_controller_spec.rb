@@ -5,7 +5,7 @@ describe Api::V1::RentsController do
 
   describe 'GET #index' do
     context 'Exists rents' do
-      let!(:rent) { create(:rent_with_user_and_book) }
+      let!(:rent) { create(:rent_with_user_and_book, user: user) }
 
       subject! { get :index }
 

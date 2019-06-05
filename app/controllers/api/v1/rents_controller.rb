@@ -4,7 +4,8 @@ module Api
       include Wor::Paginate
 
       def index
-        render_paginated Rent.all
+        rents = current_api_v1_user.rents
+        render_paginated(rents)
       end
 
       def create
