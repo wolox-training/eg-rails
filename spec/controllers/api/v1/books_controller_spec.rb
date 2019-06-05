@@ -38,7 +38,7 @@ describe Api::V1::BooksController do
           expect(response.body).to eq(expected)
         end
 
-        it 'responds with 200 status' do
+        it 'responds with ok status' do
           expect(response).to have_http_status(:ok)
         end
       end
@@ -57,7 +57,7 @@ describe Api::V1::BooksController do
           expect(parsed_body['code']).to eq(expected_code)
         end
 
-        it 'responds with 200 status' do
+        it 'responds with not found status' do
           expect(response).to have_http_status(:not_found)
         end
       end
