@@ -35,15 +35,8 @@ Rails.application.configure do
 
   config.action_mailer.perform_caching = false
 
-  config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = {
-    :user_name => Rails.application.credentials.dig(:mt_user_name),
-    :password => Rails.application.credentials.dig(:mt_password),
-    :address => Rails.application.credentials.dig(:mt_address),
-    :domain => Rails.application.credentials.dig(:mt_domain),
-    :port => '2525',
-    :authentication => :cram_md5
-  }
+  config.action_mailer.delivery_method = :letter_opener
+  config.action_mailer.perform_deliveries = true
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
