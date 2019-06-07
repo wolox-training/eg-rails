@@ -78,3 +78,7 @@ gem 'devise_token_auth'
 gem 'active_model_serializers', '~> 0.10.0'
 
 gem 'wor-paginate'
+
+gem 'sidekiq'
+
+gem 'letter_opener_web', '~> 1.0'

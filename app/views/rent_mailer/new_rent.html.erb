@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <div>
+      <ol>Date: <%= @rent.created_at.strftime("%-d/%-m/%y: %H:%M %Z") %></ol>
+      <ol>Init date: <%= @rent.start_at.strftime("%-d/%-m/%y: %H:%M %Z") %></ol>
+      <ol>End date: <%= @rent.end_at.strftime("%-d/%-m/%y: %H:%M %Z") %></ol>
+
+      <ol>Book details
+        <ol>Author: <%= @book.author %></ol>
+        <ol>Title: <%= @book.title %></ol>
+        <ol>Gender: <%= @book.gender %></ol>
+        <ol>Editor: <%= @book.editor %></ol>
+        <ol>Year: <%= @book.year %></ol>
+        <ol>Image: <%= @book.image %></ol>
+      </ol>
+    </div>
+  </body>
+</html>
