@@ -1,0 +1,12 @@
+es:
+  rent_mailer:
+    date: Fecha
+    init_date: Fecha de inicio
+    end_date: Fecha de expiración
+    book_details: Detalles del libro
+    author: Autor
+    title: Título
+    gender: Género
+    editor: Editorial
+    year: Año
+    image: Imagen
