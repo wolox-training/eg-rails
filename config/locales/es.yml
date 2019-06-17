@@ -11,3 +11,6 @@ es:
     editor: Editorial
     year: Año
     image: Imagen
+  time:
+    formats:
+      default: "%Y-%m-%d %H:%M"

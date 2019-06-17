@@ -11,3 +11,6 @@ en:
     editor: Editor
     year: Year
     image: Image
+  time:
+    formats:
+      default: "%Y-%m-%d %H:%M"

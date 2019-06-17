@@ -5,9 +5,9 @@
   </head>
   <body>
     <div>
-      <ol> <%= t('rent_mailer.date') %>      : <%= @rent.created_at.strftime("%-d/%-m/%y: %H:%M %Z") %></ol>
-      <ol> <%= t('rent_mailer.init_date') %> : <%= @rent.start_at.strftime("%-d/%-m/%y: %H:%M %Z") %></ol>
-      <ol> <%= t('rent_mailer.end_date') %>  : <%= @rent.end_at.strftime("%-d/%-m/%y: %H:%M %Z") %></ol>
+      <ol> <%= t('rent_mailer.date') %>      : <%= l(@rent.created_at) %></ol>
+      <ol> <%= t('rent_mailer.init_date') %> : <%= l(@rent.start_at) %></ol>
+      <ol> <%= t('rent_mailer.end_date') %>  : <%= l(@rent.end_at) %></ol>
 
       <ol> <%= t('rent_mailer.book_details') %>
         <ol> <%= t('rent_mailer.author') %> : <%= @book.author %></ol>
