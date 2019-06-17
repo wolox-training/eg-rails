@@ -5,17 +5,17 @@
   </head>
   <body>
     <div>
-      <ol>Date: <%= @rent.created_at.strftime("%-d/%-m/%y: %H:%M %Z") %></ol>
-      <ol>Init date: <%= @rent.start_at.strftime("%-d/%-m/%y: %H:%M %Z") %></ol>
-      <ol>End date: <%= @rent.end_at.strftime("%-d/%-m/%y: %H:%M %Z") %></ol>
+      <ol> <%= t('rent_mailer.date') %>      : <%= l(@rent.created_at) %></ol>
+      <ol> <%= t('rent_mailer.init_date') %> : <%= l(@rent.start_at) %></ol>
+      <ol> <%= t('rent_mailer.end_date') %>  : <%= l(@rent.end_at) %></ol>
 
-      <ol>Book details
-        <ol>Author: <%= @book.author %></ol>
-        <ol>Title: <%= @book.title %></ol>
-        <ol>Gender: <%= @book.gender %></ol>
-        <ol>Editor: <%= @book.editor %></ol>
-        <ol>Year: <%= @book.year %></ol>
-        <ol>Image: <%= @book.image %></ol>
+      <ol> <%= t('rent_mailer.book_details') %>
+        <ol> <%= t('rent_mailer.author') %> : <%= @book.author %></ol>
+        <ol> <%= t('rent_mailer.title') %>  : <%= @book.title %></ol>
+        <ol> <%= t('rent_mailer.gender') %> : <%= @book.gender %></ol>
+        <ol> <%= t('rent_mailer.editor') %> : <%= @book.editor %></ol>
+        <ol> <%= t('rent_mailer.year') %>   : <%= @book.year %></ol>
+        <ol> <%= t('rent_mailer.image') %>  : <%= @book.image %></ol>
       </ol>
     </div>
   </body>

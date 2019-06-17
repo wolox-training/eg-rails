@@ -3,6 +3,6 @@ class RentMailer < ApplicationMailer
     @rent = params[:rent]
     @book = @rent.book
 
-    mail(to: @rent.user.email, subject: 'New rent')
+    mail(to: @rent.user.email, subject: I18n.t('rent_mailer.subject'))
   end
 end

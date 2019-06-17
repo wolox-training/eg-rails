@@ -12,4 +12,6 @@ class User < ApplicationRecord
 
   validates :first_name, presence: true
   validates :last_name, presence: true
+  validates :locale, inclusion:
+    { in: I18n.available_locales.map(&:to_s) }
 end

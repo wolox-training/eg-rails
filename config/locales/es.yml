@@ -1,0 +1,16 @@
+es:
+  rent_mailer:
+    subject: Nueva renta
+    date: Fecha
+    init_date: Fecha de inicio
+    end_date: Fecha de expiración
+    book_details: Detalles del libro
+    author: Autor
+    title: Título
+    gender: Género
+    editor: Editorial
+    year: Año
+    image: Imagen
+  time:
+    formats:
+      default: "%Y-%m-%d %H:%M"
