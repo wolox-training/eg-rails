@@ -7,10 +7,10 @@ class RentPolicy
   end
 
   def index?
-    rent.all? { |rent| rent.user == user }
+    rent.all? { |rent| rent.user_id == user.id }
   end
 
   def create?
-    rent.user == user
+    rent.user_id == user.id
   end
 end
