@@ -5,12 +5,13 @@ module Api
 
       def index
         rents = Rent.where(user_id: current_api_v1_user.id)
+        authorize rents
         render_paginated(rents)
       end
 
       def create
         @rent = Rent.new(rent_params)
-
+        authorize @rent
         if @rent.save
           RentMailer.new_rent(rent: @rent).deliver_later
 
