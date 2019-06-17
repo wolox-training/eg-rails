@@ -1,5 +1,6 @@
 en:
   rent_mailer:
+    new_rent: New rent
     date: Date
     init_date: Init date
     end_date: End date

@@ -1,5 +1,6 @@
 es:
   rent_mailer:
+    subject: Nueva renta
     date: Fecha
     init_date: Fecha de inicio
     end_date: Fecha de expiración
