@@ -59,6 +59,7 @@ group :test do
   gem 'chromedriver-helper'
   gem 'database_cleaner'
   gem 'shoulda-matchers'
+  gem 'pundit-matchers', '~> 1.6.0'
 end
 
 group :test, :development do
@@ -82,3 +83,5 @@ gem 'wor-paginate'
 gem 'sidekiq'
 
 gem 'letter_opener_web', '~> 1.0'
+
+gem "pundit"
