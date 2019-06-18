@@ -7,6 +7,7 @@ describe User do
 
   # Associations
   it { should have_many(:rents) }
+  it { should have_many(:book_suggestions) }
 
   # Validations
   it { is_expected.to validate_presence_of(:first_name) }
