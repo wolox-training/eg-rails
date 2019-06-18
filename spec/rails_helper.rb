@@ -8,6 +8,7 @@ require 'rspec/rails'
 require 'support/database_cleaner'
 require 'support/factory_bot'
 require 'support/shoulda_matchers'
+require 'pundit/rspec'
 
 # Add additional requires below this line. Rails is not loaded until this point!
 
