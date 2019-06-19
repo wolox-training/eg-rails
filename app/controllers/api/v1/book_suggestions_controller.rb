@@ -10,6 +10,7 @@ module Api
 
         if current_api_v1_user.present?
           @book_suggestion.user = current_api_v1_user
+          authorize @book_suggestion
         end
 
         if @book_suggestion.save
