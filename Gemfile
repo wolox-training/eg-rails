@@ -60,6 +60,7 @@ group :test do
   gem 'database_cleaner'
   gem 'shoulda-matchers'
   gem 'pundit-matchers', '~> 1.6.0'
+  gem 'webmock'
 end
 
 group :test, :development do
