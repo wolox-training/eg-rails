@@ -63,4 +63,59 @@ describe Api::V1::BooksController do
       end
     end
   end
+
+  describe 'GET #search' do
+    context 'with valid attributes' do
+      before do
+        @search_params = {
+          isbn: '0385472579'
+        }
+
+        @mock_response = {
+          isbn: '0385472579',
+          title: 'Zen speaks',
+          subtitle: 'shouts of nothingness',
+          pages: 159,
+          authors: ['Zhizhong Cai']
+        }.to_json
+
+        allow_any_instance_of(OpenLibrary)
+          .to receive(:call)
+          .and_return(@mock_response)
+
+        get :search, params: @search_params
+      end
+
+      it 'find a book' do
+        expect(response.body).to eq(@mock_response)
+      end
+
+      it 'responds with ok status' do
+        expect(response).to have_http_status(:ok)
+      end
+    end
+
+    context 'with invalid attributes' do
+      context 'no isbn in params' do
+        before do
+          @search_params = {
+            isbn: nil
+          }
+
+          get :search, params: @search_params
+        end
+
+        it 'responses with the message' do
+          expected_message = I18n.t('open_library.no_isbn')
+          parsed_body = JSON.parse(response.body)
+
+          expect(parsed_body['message']).to eq(expected_message)
+        end
+
+        it 'responds with bad_request status' do
+          expect(response).to have_http_status(:bad_request)
+        end
+      end
+    end
+  end
 end

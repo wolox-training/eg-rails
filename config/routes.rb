@@ -10,7 +10,10 @@ Rails.application.routes.draw do
     namespace :v1 do
       mount_devise_token_auth_for 'User', at: 'auth'
 
-      resources :books, only: [:index, :show]
+      resources :books, only: [:index, :show] do
+        get :search, on: :collection
+      end
+
       resources :rents, only: [:index, :create]
       resources :book_suggestions, only: [:create]
     end

@@ -11,6 +11,8 @@ en:
     editor: Editor
     year: Year
     image: Image
+  open_library:
+    no_isbn: No ISBN for search
   time:
     formats:
       default: "%Y-%m-%d %H:%M"
