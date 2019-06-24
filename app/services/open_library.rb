@@ -16,15 +16,30 @@ class OpenLibrary
     handle_errors do
       raise ArgumentError, I18n.t('open_library.no_isbn') if @isbn.blank?
 
-      self.class.get('/books', query: @params).body
+      data = self.class.get('/books', query: @params).body
+      data = JSON.parse(data)
+      return parsed_data(data) if data.present?
+
+      data
     end
   end
 
   private
 
+  def parsed_data(data)
+    data = data[@isbn_key]
+    {
+      isbn: @isbn,
+      title: data['title'],
+      subtitle: data['subtitle'],
+      pages: data['number_of_pages'],
+      authors: data['authors'].map { |author| author['name'] }
+    }
+  end
+
   def handle_errors
     yield
-  rescue StandardError
-    {}
+  rescue StandardError => e
+    { message: e.message }
   end
 end

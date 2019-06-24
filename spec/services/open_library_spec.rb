@@ -4,33 +4,40 @@ describe OpenLibrary do
   describe '#call' do
     context 'with correct params' do
       before do
-        @response_data = { data: 'correct' }
+        @response_data = File.read('./spec/support/fixtures/open_library_search.json')
 
         stub_request(:get, 'https://openlibrary.org/api/books')
           .with(query:
             {
-              bibkeys: 'ISBN:test',
+              bibkeys: 'ISBN:0385472579',
               format: 'json',
               jscmd: 'data'
             })
-          .to_return(status: 200, body: @response_data.to_json)
+          .to_return(status: 200, body: @response_data)
+
+        @data = OpenLibrary.call('0385472579')
       end
 
       it 'make a call to open library api' do
-        OpenLibrary.call('test')
-
         WebMock.should have_requested(:get, 'https://openlibrary.org/api/books')
           .with(query:
             {
-              bibkeys: 'ISBN:test',
+              bibkeys: 'ISBN:0385472579',
               format: 'json',
               jscmd: 'data'
             })
       end
 
       it 'return a hash with data' do
-        data = OpenLibrary.call('test')
-        expect(data).to eq(@response_data.to_json)
+        hash_data = {
+          isbn: '0385472579',
+          title: 'Zen speaks',
+          subtitle: 'shouts of nothingness',
+          pages: 159,
+          authors: ['Zhizhong Cai']
+        }
+
+        expect(@data).to eq(hash_data)
       end
     end
 
@@ -48,7 +55,7 @@ describe OpenLibrary do
 
       it 'return empty hash with not send isbn' do
         data = OpenLibrary.call(nil)
-        expect(data).to eq({})
+        expect(data).to eq(message: 'Falta ISBN para la busqueda')
       end
     end
 
@@ -64,9 +71,9 @@ describe OpenLibrary do
           .to_timeout
       end
 
-      it 'return empty hash with not send isbn' do
+      it 'return the message error when exists' do
         data = OpenLibrary.call('test')
-        expect(data).to eq({})
+        expect(data).to eq(message: 'execution expired')
       end
     end
   end
