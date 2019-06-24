@@ -1,6 +1,5 @@
 es:
   rent_mailer:
-    subject: Nueva renta
     date: Fecha
     init_date: Fecha de inicio
     end_date: Fecha de expiración
@@ -11,6 +10,11 @@ es:
     editor: Editorial
     year: Año
     image: Imagen
+    expired_rent:
+      subject: Renta expirada
+      info: El alquiler del libro %{book_name} expira hoy
+    new_rent:
+      subject: Nueva renta
   open_library:
     no_isbn: Falta ISBN para la busqueda
   time:
