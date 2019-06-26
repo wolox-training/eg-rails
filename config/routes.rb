@@ -1,6 +1,14 @@
 require 'sidekiq/web'
 
 Rails.application.routes.draw do
+  namespace :admin do
+      resources :users
+      resources :books
+      resources :book_suggestions
+      resources :rents
+
+      root to: "users#index"
+    end
   if Rails.env.development?
     mount LetterOpenerWeb::Engine, at: "/letter_opener"
     mount Sidekiq::Web => '/sidekiq'
