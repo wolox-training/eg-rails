@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <div>
+      <%= t('rent_mailer.expired_rent.info', book_name: @book.title) %>
+
+      <ol> <%= t('rent_mailer.book_details') %>
+        <ol> <%= t('rent_mailer.author') %> : <%= @book.author %></ol>
+        <ol> <%= t('rent_mailer.title') %>  : <%= @book.title %></ol>
+        <ol> <%= t('rent_mailer.gender') %> : <%= @book.gender %></ol>
+        <ol> <%= t('rent_mailer.editor') %> : <%= @book.editor %></ol>
+        <ol> <%= t('rent_mailer.year') %>   : <%= @book.year %></ol>
+        <ol> <%= t('rent_mailer.image') %>  : <%= @book.image %></ol>
+      </ol>
+    </div>
+  </body>
+</html>

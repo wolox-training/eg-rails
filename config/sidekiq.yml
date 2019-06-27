@@ -1,0 +1,6 @@
+:schedule:
+  expired_rent:
+    every: '1.day'
+    at: '9:00'
+    tz: 'America/Argentina/Buenos_Aires'
+    class: ExpiredRentWorker
