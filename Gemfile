@@ -89,3 +89,5 @@ gem 'letter_opener_web', '~> 1.0'
 gem "pundit"
 
 gem "httparty"
+
+gem "administrate"

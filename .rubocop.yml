@@ -10,3 +10,9 @@ Style/ExpandPathArguments:
    Enabled: false
 Metrics/BlockLength:
    Enabled: false
+Style/CommentAnnotation:
+   Enabled: false
+
+AllCops:
+  Exclude:
+    - 'app/dashboards/*'
